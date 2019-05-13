@@ -2,6 +2,14 @@ import java.util.Scanner;
 
 public class main {
     public static void main (String[] args){
+
+
+//        for(int i=0; i < listOfGuerrier.length; i++){
+//            if(listOfGuerrier[i] == null){
+//                listOfGuerrier[i] = a;
+//            }
+//        }
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choisissez un personnage: Guerrier / Magicien");
         String perso = scanner.nextLine();
@@ -21,16 +29,18 @@ public class main {
             System.out.println("Vous avez choisit une nouvelle image");
             guerrier.setImage(image);
 
-            System.out.println("Choisissez un bouclier");
-            String shield = scanner.nextLine();
-            System.out.println("Vous avez choisit: " + shield);
-            guerrier.setShield(shield);
+            Arme arme = new Arme();
+            int degArme;
+
+
+            System.out.println("En tant que guerrier, vous aurez un bouclier pour vous défendre: l'écusson en cuire de marmotte malgache.");
+            String shield = "écusson en cuire de marmotte";
+            arme.setShield(shield);
 
             while (health < 5 || health > 10){
                 System.out.println("Choisissez votre niveau de vie");
                 health = scanner.nextInt();
             }
-            health = scanner.nextInt();
             guerrier.setHealth(health);
 
 
@@ -38,9 +48,19 @@ public class main {
                 System.out.println("Choisissez votre niveau de force");
                 power = scanner.nextInt();
             }
-            power = scanner.nextInt();
             guerrier.setPower(power);
+
+            if (health < 7 || power < 8) {
+                degArme = 8;
+                arme.setDegat(degArme);
+                System.out.println("La puissance de votre arme est fixée à " + degArme + "/10");
+            }else{
+                degArme = 5;
+                arme.setDegat(degArme);
+                System.out.println("La puissance de votre arme est fixée à " + degArme + "/10");
+            }
         }
+
 
         else if (perso.equalsIgnoreCase("Magicien")){
             Magicien magicien = new Magicien();
@@ -54,15 +74,34 @@ public class main {
             String image = scanner.nextLine();
             magicien.setImage(image);
 
-            while (health < 5 || health > 10){
+            Sort sort = new Sort();
+            int degatMagic;
+
+            System.out.println("En tant que magicien, vous aurez un philtre pour vous défendre: le philtre snapchat du magicien perdu de l'ombre mortel noir.");
+            String philtre = "écusson en cuire de marmotte";
+            sort.setPhiltre(philtre);
+
+            while (health < 3 || health > 6){
                 System.out.println("Choisissez votre niveau de vie");
                 health = scanner.nextInt();
             }
             magicien.setHealth(health);
 
-            System.out.println("Choisissez votre niveau de force");
-            power = scanner.nextInt();
+            while (power < 8 || power > 15) {
+                System.out.println("Choisissez votre niveau de force");
+                power = scanner.nextInt();
+            }
             magicien.setPower(power);
+
+            if (health < 4 || power < 10) {
+                degatMagic = 9;
+                sort.setSort(degatMagic);
+                System.out.println("La puissance de votre arme est fixée à " + degatMagic + "/10");
+            }else{
+                degatMagic = 5;
+                sort.setSort(degatMagic);
+                System.out.println("La puissance de votre arme est fixée à " + degatMagic + "/10");
+            }
         }
     }
 }

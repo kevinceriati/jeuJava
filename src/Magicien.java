@@ -38,5 +38,9 @@ public class Magicien {
     public void setPower(int force) {
         this.power = force;
     }
+
+    public void setPhiltre(String bouclier) {
+        this.philtre = philtre;
+    }
 }
 
