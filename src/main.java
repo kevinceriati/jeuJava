@@ -2,9 +2,11 @@ import java.util.Scanner;
 
 public class main {
     public static void main(String[] args) {
+        Personnage listeOfGuerrier[] = new Personnage[100];
 
         Scanner scanner = new Scanner(System.in);
         int startChoice = 1;
+        int guerrierCourant = 0;
 
         while (startChoice != 5) {
 
@@ -15,7 +17,7 @@ public class main {
             scanner.nextLine();
 
             if (startChoice == 1) {
-                int guerrierCourant = 0;
+
                 int health = 0;
                 int power = 0;
 
@@ -25,7 +27,7 @@ public class main {
 
 
                 if (perso.equalsIgnoreCase("Guerrier")) {
-                    Guerrier guerrier = new Guerrier();
+                    Personnage guerrier = new Guerrier();
                     System.out.println("Choisissez un nom");
 
                     String name = scanner.nextLine();
@@ -40,10 +42,8 @@ public class main {
                     Arme arme = new Arme();
                     int degArme;
 
-
                     System.out.println("En tant que guerrier, vous aurez un bouclier pour vous défendre: l'écusson en cuire de marmotte malgache.");
-                    String shield = "écusson en cuire de marmotte";
-                    guerrier.setShield(shield);
+                    guerrier.protection = "écusson en cuire de marmotte";
 
                     while (health < 5 || health > 10) {
                         System.out.println("Choisissez votre niveau de vie");
@@ -60,22 +60,21 @@ public class main {
 
                     if (health < 7 || power < 8) {
                         degArme = 8;
-                        arme.setDegat(degArme);
+                        guerrier.getArme().setDegat(degArme);
                         System.out.println("La puissance de votre arme est fixée à " + degArme + "/10");
-                        guerrier.setArme(arme);
+
                     } else {
                         degArme = 5;
-                        arme.setDegat(degArme);
+                        guerrier.getArme().setDegat(degArme);
                         System.out.println("La puissance de votre arme est fixée à " + degArme + "/10");
                         guerrier.setArme(arme);
                     }
-                    Guerrier listeOfGuerrier[] = new Guerrier[100];
+                    System.out.println(guerrier);
                     listeOfGuerrier[guerrierCourant] = guerrier;
-                    System.out.println(listeOfGuerrier[guerrierCourant]);
                     guerrierCourant++;
 
                 } else if (perso.equalsIgnoreCase("Magicien")) {
-                    Magicien magicien = new Magicien();
+                    Personnage magicien = new Magicien();
                     System.out.println("Choisissez un nom");
 
                     String name = scanner.nextLine();
@@ -91,7 +90,6 @@ public class main {
 
                     System.out.println("En tant que magicien, vous aurez un philtre pour vous défendre: le philtre snapchat du magicien perdu de l'ombre mortel noir.");
                     String philtre = "écusson en cuire de marmotte";
-                    sort.setPhiltre(philtre);
 
                     while (health < 3 || health > 6) {
                         System.out.println("Choisissez votre niveau de vie");
@@ -107,20 +105,26 @@ public class main {
 
                     if (health < 4 || power < 10) {
                         degatMagic = 9;
-                        sort.setSort(degatMagic);
+                        magicien.getSort().setSort(degatMagic);
                         System.out.println("La puissance de votre arme est fixée à " + degatMagic + "/10");
                     } else {
                         degatMagic = 5;
-                        sort.setSort(degatMagic);
+                        magicien.getSort().setSort(degatMagic);
                         System.out.println("La puissance de votre arme est fixée à " + degatMagic + "/10");
                     }
+                    System.out.println(magicien);
+                    listeOfGuerrier[guerrierCourant] = magicien;
+                    guerrierCourant++;
                 }
             }
 
-
-//        if(startChoice == 2){
-//            System.out.println("Liste des Guerriers :" + listeOfGuerrier);
-//        }
+            if (startChoice == 2) {
+                for (int i = 0; i < listeOfGuerrier.length; i++) {
+                    if (listeOfGuerrier[i] != null) {
+                        System.out.println(listeOfGuerrier[i]);
+                    }
+                }
+            }
         }
     }
 }
