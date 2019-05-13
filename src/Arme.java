@@ -1,17 +1,15 @@
 public class Arme {
 
-    private int arme;
-    private String shield;
+    private int degat;
+    private String nom;
 
-    public int getArme(){
-        return arme;
-    }
+    public int getDegat(){ return degat; }
 
-    public String getShield(){ return shield; }
+    public void setDegat(int newDegat){ this.degat = newDegat; }
 
-    public void setDegat(int newArme){ this.arme = newArme; }
+    public String getNom(){ return nom; }
 
-    public void setShield( String bouclier){
-        this.shield = bouclier;
+    public void setNom(String nom){
+        this.nom = nom;
     }
 }

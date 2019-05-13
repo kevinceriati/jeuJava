@@ -5,6 +5,8 @@ public class Guerrier {
     String image = "https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwi62J3Y_5DiAhVL0uAKHV9oBYAQjRx6BAgBEAU&url=http%3A%2F%2Fwww.pathfinder-fr.org%2FWiki%2FPathfinder-RPG.Guerrier.ashx&psig=AOvVaw3kVaEAl-vkF0RasfFCdaSl&ust=1557578896209390";
     int health;
     int power;
+    String shield;
+    Arme arme;
 
     public String getName() {
         return name;
@@ -40,14 +42,29 @@ public class Guerrier {
     public void setPower(int force) {
         this.power = force;
     }
+
+    public Arme getArme() {
+        return arme;
+    }
+
+    public void setArme(Arme arme) { this.arme = arme; }
+
+    public String getShield() {
+        return shield;
+    }
+
+    public void setShield(String bouclier) {
+        this.shield = bouclier;
+    }
+
+
+    public String toString() {
+        return "Nom du joueur : " + name + '\n' +
+                  "PV : " + health + '\n' +
+                  "Power : " + power + '\n' +
+                 "Dégat arme : " + arme.getDegat();
+    }
 }
 
-//    public String getShield() {
-//        return shield;
-//    }
-//    public void setShield(String bouclier) {
-//        this.shield = bouclier;
-//    }
-//}
 
 
