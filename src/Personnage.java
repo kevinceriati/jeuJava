@@ -6,7 +6,6 @@ public class Personnage {
     int power;
     String protection;
     Arme arme;
-    Sort sort;
     String type;
 
     public String getType() {
@@ -17,8 +16,6 @@ public class Personnage {
         this.type = type;
     }
 
-
-
     public int getId() {
         return id;
     }
@@ -26,7 +23,6 @@ public class Personnage {
     public void setId(int id) {
         this.id = id;
     }
-
 
     public String getName() {
         return name;
@@ -36,7 +32,6 @@ public class Personnage {
         this.name = nom;
     }
 
-
     public String getImage() {
         return image;
     }
@@ -44,7 +39,6 @@ public class Personnage {
     public void setImage(String picture) {
         this.image = picture;
     }
-
 
     public int getHealth() {
         return health;
@@ -68,14 +62,6 @@ public class Personnage {
 
     public void setArme(Arme arme) {
         this.arme = arme;
-    }
-
-    public Sort getSort() {
-        return sort;
-    }
-
-    public void setSort(Sort sort) {
-        this.sort = sort;
     }
 
     public String toString() {

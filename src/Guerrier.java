@@ -18,8 +18,7 @@ public class Guerrier extends Personnage{
                 "PV : " + health + "\n" +
                 "Power : " + power + "\n" +
                 "Dégat arme : " + arme.getDegat() + "\n" +
-                "protection : " + shield + "\n" +
-                "Player n° : " + id + "\n";
+                "protection : " + shield + "\n";
     }
 }
 

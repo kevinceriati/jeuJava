@@ -4,7 +4,7 @@ public class Magicien extends Personnage {
 
     public Magicien() {
         super.protection = phyltre;
-        this.sort = new Sort();
+        super.setArme(new Arme());
         super.type = "magicien";
     }
 
@@ -13,9 +13,8 @@ public class Magicien extends Personnage {
         return "Nom du joueur : " + name + "\n" +
                 "PV : " + health + "\n" +
                 "Power : " + power + "\n" +
-                "Dégat sort : " + sort.getSort() + "\n" +
-                "protection : " + phyltre + "\n" +
-                "Player n° : " + id + "\n";
+                "Dégat sort : " + arme.getDegat() + "\n" +
+                "protection : " + phyltre + "\n";
     }
 }
 
