@@ -3,8 +3,9 @@ public class Magicien extends Personnage {
     String phyltre = "philtre snapchat du magicien perdu de l'ombre mortel noir";
 
     public Magicien() {
-        super.protection=phyltre;
+        super.protection = phyltre;
         this.sort = new Sort();
+        super.type = "magicien";
     }
 
     @Override                                             // methode toString surchargée
@@ -13,8 +14,8 @@ public class Magicien extends Personnage {
                 "PV : " + health + "\n" +
                 "Power : " + power + "\n" +
                 "Dégat sort : " + sort.getSort() + "\n" +
-//                "Sort : " + sort + "\n" +
-                "protection : " + phyltre + "\n";
+                "protection : " + phyltre + "\n" +
+                "Player n° : " + id + "\n";
     }
 }
 

@@ -1,4 +1,5 @@
 public class Personnage {
+    int id;
     String name;
     String image = "http://www.la-caverne-du-mage.com/images/Image/Image/storm_mage_by_devburmakd39ax1h.jpg?1483815050422";
     int health;
@@ -6,6 +7,26 @@ public class Personnage {
     String protection;
     Arme arme;
     Sort sort;
+    String type;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 
     public String getName() {
         return name;
@@ -61,6 +82,7 @@ public class Personnage {
         return "Nom du joueur : " + name + "\n" +
                 "PV : " + health + "\n" +
                 "Power : " + power + "\n" +
-                "Protection : " + protection + "\n";
+                "Protection : " + protection + "\n" +
+                "Player n° : " + id + "\n";
     }
 }
