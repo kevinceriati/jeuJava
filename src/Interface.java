@@ -1,12 +1,16 @@
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Interface {
-    private Personnage listeOfGuerrier[] = new Personnage[100];
+    private ArrayList<Cases> plateau = new ArrayList();
+    private ArrayList<Personnage> listeOfGuerrier = new ArrayList<>();
     private Scanner scanner = new Scanner(System.in);
     private int startChoice;
     private int guerrierCourant = 0;
     private int navChoice;
     private Personnage combattant = null;
+    private String[] typeCase = {"Bonus", "Ennemis", "Neutre"};
 
     public void launchGame() {
         while (navChoice != 5) {
@@ -19,6 +23,8 @@ public class Interface {
                 modify();
             } else if (navChoice == 4) {
                 delete();
+            } else if (navChoice == 6) {
+                plateau();
             }
         }
     }
@@ -26,7 +32,7 @@ public class Interface {
     public void menuStart() {
 
         System.out.println("Jouez au JEUX DE ROLE DE CES MORTS: une aventure épique en ligne de commade : " + "\n" + 1 + " Créer un peronnage" + '\n' + 2 + " Afficher/Choisir un peronnage" + "\n" +
-                3 + " modifier personnage" + '\n' + 4 + " supprimer un personnage" + " \n" + 5 + " Quitter");
+                3 + " modifier personnage" + '\n' + 4 + " supprimer un personnage" + " \n" + 5 + " Quitter" + "\n" + 6 + " Start new game");
 
         navChoice = scanner.nextInt();
         scanner.nextLine();
@@ -88,17 +94,17 @@ public class Interface {
         degat(combattant.getType(), combattant.getHealth(), combattant.getPower());
 
         System.out.println(combattant);
-        listeOfGuerrier[guerrierCourant] = combattant;
+        listeOfGuerrier.add(combattant);
         combattant.setId(guerrierCourant);
         guerrierCourant++;
     }
 
     public void afficher() {
         if (guerrierCourant > 0 || startChoice == 2) {
-            for (int i = 0; i < listeOfGuerrier.length; i++) {
-                if (listeOfGuerrier[i] != null) {
-                    System.out.println(listeOfGuerrier[i]);
-                }
+            for (int i = 0; i < listeOfGuerrier.size(); i++) {
+
+                System.out.println(listeOfGuerrier.get(i));
+
             }
         }
     }
@@ -107,7 +113,7 @@ public class Interface {
 
         System.out.println("Choissiez un perso à modifier");
         int idToModif = scanner.nextInt();
-        Personnage perso = listeOfGuerrier[idToModif];
+        Personnage perso = listeOfGuerrier.get(idToModif);
         scanner.nextLine();
         System.out.println("Vous avez choisie de modifier Le Player n° : " + perso.getId());
         System.out.println("Que souhaitez vous modifier" + "\n" + 1 + " Nom" + '\n' + 2 + " Image" + "\n" +
@@ -164,7 +170,7 @@ public class Interface {
                     perso.setArme(perso.arme);
                 }
                 System.out.println(perso);
-                listeOfGuerrier[guerrierCourant] = perso;
+                listeOfGuerrier.add(perso);
                 perso.setId(guerrierCourant);
                 guerrierCourant++;
             }
@@ -198,10 +204,10 @@ public class Interface {
                     degatMagic = 5;
                     System.out.println("La puissance de votre arme est fixée à " + degatMagic + "/10");
                 }
-                    perso.getArme().setDegat(degatMagic);
+                perso.getArme().setDegat(degatMagic);
 
                 System.out.println(perso);
-                listeOfGuerrier[guerrierCourant] = perso;
+                listeOfGuerrier.add(perso);
                 perso.setId(guerrierCourant);
                 guerrierCourant++;
             }
@@ -217,13 +223,12 @@ public class Interface {
     public void delete() {
         System.out.println("Quel player voulez vous supprimer");
         int resultat = scanner.nextInt();
-        listeOfGuerrier[resultat] = null;
+        listeOfGuerrier.remove(resultat);
         afficher();
     }
 
     public void degat(String type, int health, int power) {
         Arme arme = new Arme();
-
         int degArme = 0;
         if (type == "Guerrier") {
             arme.setNom("Fourre manan");
@@ -234,7 +239,6 @@ public class Interface {
                 degArme = 5;
                 System.out.println("La puissance de votre arme est fixée à " + degArme + "/10");
             }
-
         } else if (type == "Magicien") {
             arme.setNom("philtre snapchat du magicien perdu de l'ombre mortel noir");
             if (health < 5 || power < 10) {
@@ -247,5 +251,18 @@ public class Interface {
         }
         combattant.setArme(arme);
         combattant.getArme().setDegat(degArme);
+    }
+
+    public void plateau() {
+        System.out.println("Combien de cases voulez-vous sur le plateau : ");
+        int nbCases = scanner.nextInt();
+        scanner.nextLine();
+        for (int i = 0; i < nbCases; i++) {
+            Random r = new Random();
+            String type = typeCase[r.nextInt(typeCase.length)];
+            Cases cas = new Cases(type, i + 1);
+            plateau.add(cas);
+            System.out.println(plateau.get(i));
+        }
     }
 }

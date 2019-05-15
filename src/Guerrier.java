@@ -14,7 +14,8 @@ public class Guerrier extends Personnage{
 
     @Override
     public String toString() {
-        return "Nom du joueur : " + name + "\n" +
+        return  "Joueur n° : " + id + "\n" +
+                "Nom du joueur : " + name + "\n" +
                 "PV : " + health + "\n" +
                 "Power : " + power + "\n" +
                 "Dégat arme : " + arme.getDegat() + "\n" +

@@ -10,7 +10,8 @@ public class Magicien extends Personnage {
 
     @Override                                             // methode toString surchargée
     public String toString() {
-        return "Nom du joueur : " + name + "\n" +
+        return  "Joueur n° : " + id + "\n" +
+                "Nom du joueur : " + name + "\n" +
                 "PV : " + health + "\n" +
                 "Power : " + power + "\n" +
                 "Dégat sort : " + arme.getDegat() + "\n" +
